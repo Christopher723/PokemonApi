@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A098EEF2AEECA1C0021B8B7 /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A098EEE2AEECA1C0021B8B7 /* XDismissButton.swift */; };
 		3A475BF62AEC36FB003E67FB /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A475BF52AEC36FB003E67FB /* PokemonDetailView.swift */; };
 		3ACA67E72AEACDCC00336DA2 /* PokemonApiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA67E62AEACDCC00336DA2 /* PokemonApiApp.swift */; };
 		3ACA67E92AEACDCC00336DA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA67E82AEACDCC00336DA2 /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A098EEE2AEECA1C0021B8B7 /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		3A475BF52AEC36FB003E67FB /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		3ACA67E32AEACDCC00336DA2 /* PokemonApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACA67E62AEACDCC00336DA2 /* PokemonApiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonApiApp.swift; sourceTree = "<group>"; };
@@ -40,6 +42,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A098EF02AEECA250021B8B7 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				3A098EEE2AEECA1C0021B8B7 /* XDismissButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		3A098EF12AEECA2E0021B8B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3ACA67F82AEACEF700336DA2 /* PokemonModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3A098EF22AEECA340021B8B7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3ACA67F42AEACE0300336DA2 /* PokemonService.swift */,
+				3ACA67F62AEACE5900336DA2 /* PokemonViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3A098EF32AEECA470021B8B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3ACA67E82AEACDCC00336DA2 /* ContentView.swift */,
+				3A475BF52AEC36FB003E67FB /* PokemonDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3ACA67DA2AEACDCC00336DA2 = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				3ACA67E62AEACDCC00336DA2 /* PokemonApiApp.swift */,
-				3ACA67E82AEACDCC00336DA2 /* ContentView.swift */,
-				3A475BF52AEC36FB003E67FB /* PokemonDetailView.swift */,
-				3ACA67F42AEACE0300336DA2 /* PokemonService.swift */,
-				3ACA67F62AEACE5900336DA2 /* PokemonViewModel.swift */,
-				3ACA67F82AEACEF700336DA2 /* PokemonModel.swift */,
+				3A098EF12AEECA2E0021B8B7 /* Model */,
+				3A098EF22AEECA340021B8B7 /* ViewModel */,
+				3A098EF32AEECA470021B8B7 /* View */,
+				3A098EF02AEECA250021B8B7 /* Button */,
 				3ACA67EA2AEACDCD00336DA2 /* Assets.xcassets */,
 				3ACA67EC2AEACDCD00336DA2 /* Preview Content */,
 			);
@@ -155,6 +190,7 @@
 				3ACA67F92AEACEF700336DA2 /* PokemonModel.swift in Sources */,
 				3ACA67F52AEACE0300336DA2 /* PokemonService.swift in Sources */,
 				3A475BF62AEC36FB003E67FB /* PokemonDetailView.swift in Sources */,
+				3A098EEF2AEECA1C0021B8B7 /* XDismissButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
