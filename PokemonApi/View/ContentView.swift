@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var currentURL = ""
     @State var currentImage = ""
     @State var currentName = ""
+    @State var statsArray: [Int] = []
 
     let columns = [
         GridItem(.adaptive(minimum: 100))
@@ -31,15 +32,25 @@ struct ContentView: View {
                             
                         }
                         .onTapGesture{
-//                            Pokemon.currentNumber = Pokemon.getPokemonIndex(pokemon: pokemon)
-//                            Pokemon.setCurrent()
-//                            Pokemon.fetchDetails()
-//                            for stats in Pokemon.stats{
-//                                print(stats.stat.name)
-//                                print(stats.base_stat)
-//                            }
+                            statsArray = []
+                            Pokemon.currentNumber = Pokemon.getPokemonIndex(pokemon: pokemon)
+                            Pokemon.setCurrent()
+                            Pokemon.fetchDetails()
+                            
+                            DispatchQueue.main.async{
+                                for stats in Pokemon.stats{
+                                    statsArray.append(stats.base_stat)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                print(pokemon.name)
+                                print(statsArray)
+                            }
+                            
+                            
                             currentImage = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(Pokemon.getPokemonIndex(pokemon: pokemon)).png"
                             currentName = pokemon.name
+                            
                             isShowing.toggle()
                             
                         }
@@ -51,7 +62,7 @@ struct ContentView: View {
                 .padding()
             
             if isShowing{
-                PokemonDetailView(currentURL: .constant("None"), isShowing: $isShowing, name: currentName, image: currentImage)
+                PokemonDetailView(currentURL: .constant("None"), isShowing: $isShowing, name: currentName, image: currentImage, statsArray: $statsArray)
                 
             }
         }

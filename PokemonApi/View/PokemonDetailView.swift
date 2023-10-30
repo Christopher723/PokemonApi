@@ -12,7 +12,9 @@ struct PokemonDetailView: View {
     @Binding var isShowing: Bool
     var name = "Bulbasaur"
     var image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-    
+    @Binding var statsArray: [Int]
+    var statLabels = ["HP", "ATK", "SPATK", "DEF", "SPDEF", "Speed"]
+
     var body: some View {
         VStack{
             Spacer().frame(height: 20)
@@ -27,12 +29,26 @@ struct PokemonDetailView: View {
             }
             .padding()
             Spacer()
-            
-            VStack{
-                HStack{
-                    Text("test")
+            HStack{
+                VStack(alignment: .leading){
+                    
+                    ForEach(0..<statsArray.count, id: \.self) { index in
+                        HStack{
+                            Text(statLabels[index])
+                                .font(.caption)
+                            Rectangle()
+                                .frame(width: CGFloat(statsArray[index]), height: 10)
+                                .foregroundColor(Color.blue) // You can change the color as needed
+                            Text("\(statsArray[index])")
+                        }
+                        
+                    }
+                    
                 }
+                Spacer()
             }
+            .padding()
+            Spacer()
         }
         .frame(width: 300, height: 485)
         .background(Color(.systemBackground))
@@ -51,5 +67,5 @@ struct PokemonDetailView: View {
 }
 
 #Preview {
-    PokemonDetailView(currentURL: .constant(""), isShowing: .constant(false))
+       PokemonDetailView(currentURL: .constant(""), isShowing: .constant(false), statsArray: .constant([0]))
 }
