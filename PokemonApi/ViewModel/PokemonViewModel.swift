@@ -10,12 +10,12 @@ import Foundation
 class PokemonViewModel: ObservableObject{
     @Published var pokemons = [Pokemon]()
     @Published var stats = [Stat]()
-    @Published var currentNumber = 1
-    
+  
     
     private let service = PokemonDataService()
     init() {
         fetchPokemon()
+        
     }
     
     func fetchPokemon() {
@@ -26,14 +26,18 @@ class PokemonViewModel: ObservableObject{
         }
         
     }
-    func setCurrent(){
-        service.setPokemon(current: currentNumber)
+    
+
+    
+    func setCurrent(current: Int){
+        service.setPokemon(current: current)
     }
-    func fetchDetails(){
+    func fetchDetails(completion: @escaping () -> Void){
         service.fetchDetails(){
             pokemonDetails in
             DispatchQueue.main.async{
                 self.stats = pokemonDetails
+                completion()
             }
         }
     }

@@ -9,12 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var Pokemon = PokemonViewModel()
+    @ObservedObject var Pokemon = PokemonViewModel()
     @State var isShowing = false
     @State var currentURL = ""
     @State var currentImage = ""
     @State var currentName = ""
     @State var statsArray: [Int] = []
+    
 
     let columns = [
         GridItem(.adaptive(minimum: 100))
@@ -33,21 +34,15 @@ struct ContentView: View {
                         }
                         .onTapGesture{
                             statsArray = []
-                            Pokemon.currentNumber = Pokemon.getPokemonIndex(pokemon: pokemon)
-                            Pokemon.setCurrent()
-                            Pokemon.fetchDetails()
-                            
-                            DispatchQueue.main.async{
-                                for stats in Pokemon.stats{
-                                    statsArray.append(stats.base_stat)
-                                }
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                print(pokemon.name)
-                                print(statsArray)
-                            }
-                            
-                            
+                            Pokemon.setCurrent(current: Pokemon.getPokemonIndex(pokemon: pokemon))
+                            Pokemon.fetchDetails {
+                                
+                                    for stats in Pokemon.stats {
+                                        statsArray.append(stats.base_stat)
+                                    }
+                        }
+                        
+                                
                             currentImage = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(Pokemon.getPokemonIndex(pokemon: pokemon)).png"
                             currentName = pokemon.name
                             
