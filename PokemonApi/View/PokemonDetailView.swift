@@ -22,6 +22,7 @@ struct PokemonDetailView: View {
                 VStack{
                     Text(name)
                         .bold()
+                        
                     AsyncImage(url: URL(string: image))
                     
                 }
@@ -36,6 +37,7 @@ struct PokemonDetailView: View {
                         HStack{
                             Text(statLabels[index])
                                 .font(.caption)
+                                .frame(width: 50)
                             Rectangle()
                                 .frame(width: CGFloat(statsArray[index]), height: 10)
                                 .foregroundColor(Color.blue) // You can change the color as needed
